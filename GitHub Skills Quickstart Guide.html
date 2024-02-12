@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+  <meta charset="utf-8" />
+  <title>GitHub Skills Quickstart Guide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="favicon.png" type="image/x-icon" />
+  <link
+    href="https://unpkg.com/@primer/css@^21/dist/primer.css"
+    rel="stylesheet"
+  />
+  <style>
+    h1,
+    .f2 {
+      text-rendering: optimizeLegibility;
+    }
+
+    .highlight .nt {
+      color: var(--color-prettylights-syntax-entity-tag);
+    }
+
+    .highlight .na {
+      color: var(--color-prettylights-syntax-constant);
+    }
+
+    .highlight .s {
+      color: var(--color-prettylights-syntax-string);
+    }
+
+    .highlight .sx {
+      color: var(--color-prettylights-syntax-constant);
+    }
+
+    .highlight .c1 {
+      color: var(--color-prettylights-syntax-comment);
+    }
+
+    .highlight .m {
+      color: var(--color-prettylights-syntax-constant);
+    }
+  </style>
+
+  <body data-color-mode="auto" data-light-theme="light" data-dark-theme="dark">
+    <div class="color-bg-inset">
+      <header>
+        <div class="container-xl p-responsive py-3">
+          <a
+            href="/"
+            class="d-flex flex-items-center Link--primary no-underline"
+          >
+            <svg
+              version="1.1"
+              width="32"
+              height="32"
+              viewBox="0 0 16 16"
+              aria-hidden="true"
+              class="v-align-middle"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+              ></path>
+            </svg>
+            <span class="h4 ml-2">Skills</span>
+          </a>
+        </div>
+      </header>
+    </div>
+
+    <main><div class="container-xl p-4">
+  <div class="markdown-body"><h1 id="github-skills-quickstart-guide">GitHub Skills Quickstart Guide</h1>
+
+<p>Build your own GitHub Actions-powered courses in a few simple steps.</p>
+
+<p>This guide covers planning your course, building your course, and best practices for GitHub Actions-powered courses.</p>
+
+<p>Take a look at our <a href="https://github.com/skills">GitHub Skills</a> courses for examples and templates.</p>
+
+<h2 id="table-of-contents">Table of contents</h2>
+
+<ul>
+  <li><a href="#author-prerequisites">Author prerequisites</a></li>
+  <li><a href="#planning-your-course">Planning your course</a></li>
+  <li><a href="#set-up-your-repository">Set up your repository</a></li>
+  <li><a href="#writing-your-readme">Writing your README</a></li>
+  <li><a href="#writing-your-actions-workflow-files">Writing your Actions workflow files</a></li>
+  <li><a href="#testing-and-monitoring-your-course">Testing and monitoring your course</a></li>
+  <li><a href="#best-practices-for-building-courses">Best practices for building courses</a></li>
+</ul>
+
+<h2 id="author-prerequisites">Author prerequisites</h2>
+
+<p>Course authors should be familiar with <a href="https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax">Markdown</a>, <a href="https://yaml.org/">YAML</a>, and <a href="https://docs.github.com/en/actions">GitHub Actions</a> before starting to make their own courses.</p>
+
+<p>Some courses will require knowledge of <a href="https://cli.github.com/manual/">GitHub CLI</a> and <a href="https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Understanding_client-side_tools/Command_line">command line</a>.</p>
+
+<h2 id="planning-your-course">Planning your course</h2>
+
+<h3 id="write-down-your-learning-goals">Write down your learning goals</h3>
+
+<ul>
+  <li>Does your course give the learner something practical to work on?
+    <ul>
+      <li>Learners prefer working on real projects over examples.</li>
+      <li>How can the learner use this project after they finish the course?</li>
+    </ul>
+  </li>
+  <li>What specific skill does the learner leave your course with?
+    <ul>
+      <li>Focus on what the learner will be able to do after they complete the course.</li>
+    </ul>
+  </li>
+  <li>Is an Actions-based course right for your goal?
+    <ul>
+      <li>Does the learning experience benefit from step-by-step, in-repository learning?</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="outline-your-steps">Outline your steps</h3>
+
+<ul>
+  <li>Does this workflow match what the learner will do in the “real world”?
+    <ul>
+      <li>If you were teaching your friend, how would you interact with them in the repository?</li>
+      <li>Does each step build towards the skills you’ve identified?</li>
+    </ul>
+  </li>
+  <li>Can you teach the skill in three to five small steps?
+    <ul>
+      <li>Most learners tend to drop off after 30-45 minutes.</li>
+      <li>We’ve found that it takes learners about four times the length of an expert to complete a course.</li>
+      <li>If your course needs more steps, consider splitting your learning objective into multiple courses.</li>
+    </ul>
+  </li>
+  <li>Does the order of the steps build the learner’s knowledge in each step?
+    <ul>
+      <li>Each step should reference and build on the knowledge in the previous steps.</li>
+    </ul>
+  </li>
+  <li>Does each step relate to the main learning goal?
+    <ul>
+      <li>You can use GitHub Actions and GitHub CLI to automate any needed steps that don’t build towards the learning goal.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="set-up-your-repository">Set up your repository</h2>
+
+<ul>
+  <li>Start by clicking “Use this template” on our <a href="https://github.com/skills/template-template">course template</a>.</li>
+  <li>Check the box for “Template repository” either when setting up your repository, or <a href="https://docs.github.com/repositories/creating-and-managing-repositories/creating-a-template-repository">in the repository settings</a> afterwards. Actions <em>are not enabled by default</em> in forks.</li>
+  <li>Add a 1280×640 social image. Learners will share your course on different websites that will pull in the social image.</li>
+  <li><a href="https://docs.github.com/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-the-automatic-deletion-of-branches">Enable the automatically delete head branches</a> setting.</li>
+  <li><a href="https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository">Add a LICENSE file to your repository</a>. GitHub uses Creative Commons Attribution 4.0 International.</li>
+  <li><a href="https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files">Add a <code class="language-plaintext highlighter-rouge">.gitignore</code> file</a>. You can see an <a href="https://github.com/skills/introduction-to-github/blob/main/.gitignore">example <code class="language-plaintext highlighter-rouge">.gitignore</code></a>. We recommend at minimum ignoring operating system generated files.</li>
+  <li>Include <code class="language-plaintext highlighter-rouge">skills-course</code> in the <a href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/classifying-your-repository-with-topics">repository topics</a>.</li>
+</ul>
+
+<h2 id="writing-your-readme">Writing your README</h2>
+
+<p>Your README file will have a few sections: a header, a start step, three to five workflow steps, a finish step, and a footer.</p>
+
+<p>The raw source of the README in <a href="https://github.com/skills/introduction-to-github">Introduction to GitHub</a> includes many comments you can use to guide the development of your course’s README file.</p>
+
+<h3 id="writing-your-readme-header">Writing your README: Header</h3>
+
+<p>Start with a short paragraph describing what you’ll teach. Be sure to include information on how the course is relevant to the learner. This paragraph should answer the question, “Why should I take this course?”</p>
+
+<p>Include the course title in sentence case, and a concise description in emphasis.</p>
+
+<h3 id="writing-your-readme-start">Writing your README: Start</h3>
+
+<p>A brief paragraph should describe the goal of the course, what the learner will learn, and why they should take the course.</p>
+
+<p>A brief list of the following items can help the learner decide if the course is right for them:</p>
+
+<ul>
+  <li>Who is this for</li>
+  <li>What you’ll learn</li>
+  <li>What you’ll build</li>
+  <li>Prerequisites</li>
+  <li>How long the course is (time and steps)</li>
+</ul>
+
+<p>Include clear directions on how to start the course.</p>
+
+<h3 id="writing-your-readme-steps">Writing your README: Steps</h3>
+
+<p>Each step should:</p>
+
+<ul>
+  <li>Acknowledge the learner completed the previous step, using emphasis (italics).</li>
+  <li>Concisely describe the concept behind the next step. Link to GitHub docs for more in-depth explanation.</li>
+  <li>Describe what the learner is about to do</li>
+  <li>Mark the activity with <code class="language-plaintext highlighter-rouge">### :keyboard: Activity: Specific description</code></li>
+  <li>Use an ordered list to briefly describe what the learner needs to do</li>
+  <li>Let the learner know it will need about 20 seconds and refresh to move on to the next step</li>
+  <li>Include warning and troubleshooting information if the learner gets stuck</li>
+</ul>
+
+<p>Try to keep your formatting consistent so the learner can more easily find what they are looking for.</p>
+
+<p>The first step is the hardest, so pick something easy! On the first step, encourage users to open new tabs for steps.</p>
+
+<h3 id="writing-your-readme-finish">Writing your README: Finish</h3>
+
+<p>In the finish section,</p>
+
+<ul>
+  <li>Celebrate that the learner finished the course</li>
+  <li>Include an celebratory image</li>
+  <li>Review what the learner just did</li>
+  <li>Provide next steps for learners who want to know more</li>
+  <li>Invite feedback about the course</li>
+</ul>
+
+<h3 id="writing-your-readme-footer">Writing your README: Footer</h3>
+
+<ul>
+  <li>Include a link for how learners should get help if they get stuck or have further questions</li>
+  <li>Include a link to the GitHub status page. If GitHub Actions is down, the course won’t work.</li>
+  <li>Include copyright information and a link to the license</li>
+  <li>Include Code of Conduct and other contributing information</li>
+</ul>
+
+<p>The footer should not be included in the finish section. The footer should appear regardless of which step the learner is currently on.</p>
+
+<h2 id="writing-your-actions-workflow-files">Writing your Actions workflow files</h2>
+
+<h3 id="writing-your-actions-workflow-files-connect-your-steps-to-github-actions-events">Writing your Actions workflow files: Connect your steps to GitHub Actions events</h3>
+
+<p>Every step will have an Actions workflow file that triggers on <a href="https://docs.github.com/actions/learn-github-actions/events-that-trigger-workflows">GitHub Actions events</a>. Start by reviewing which event corresponds with each of your steps.</p>
+
+<h3 id="writing-your-actions-workflow-files-identify-what-github-actions-will-need-to-do-in-each-step">Writing your Actions workflow files: Identify what GitHub Actions will need to do in each step</h3>
+
+<p>You can use <a href="https://cli.github.com/">GitHub CLI</a> in your Actions workflows to perform almost any GitHub interaction you can think of. Write down everything each step will need to do to complete the step. Store links for reference as your work on your course.</p>
+
+<h3 id="writing-your-actions-workflow-files-sections-of-the-workflow-file">Writing your Actions workflow files: Sections of the workflow file</h3>
+
+<p>Take a look at <a href="https://github.com/skills/introduction-to-github/blob/main/.github/workflows">Introduction to GitHub</a> for example workflow files.</p>
+
+<p>Each workflow file has the name format: <code class="language-plaintext highlighter-rouge">N-brief-summary.yml</code>, where <code class="language-plaintext highlighter-rouge">N</code> is the step number and <code class="language-plaintext highlighter-rouge">brief-summary</code> describes the step. We recommend this format to make it easy to see the order the steps will run in.</p>
+
+<p>Each workflow file will have a few sections, the name, describing comments, event trigger, job header, and steps.</p>
+
+<p>The first section is the <strong>name</strong>:</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">Step 0, Start</span>
+</code></pre></div></div>
+
+<p>Next, add <strong>comments describing</strong> what the Actions workflow will do:</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># This step triggers after the learner creates a new repository from the template.</span>
+<span class="c1"># This step updates from step 1 to step 2.</span>
+</code></pre></div></div>
+
+<p>Followed by the <strong>event trigger</strong>:</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># This will run every time we create push a commit to `main`.</span>
+<span class="c1"># Reference: https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows</span>
+<span class="na">on</span><span class="pi">:</span>
+  <span class="na">workflow_dispatch</span><span class="pi">:</span>
+  <span class="na">push</span><span class="pi">:</span>
+    <span class="na">branches</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">main</span>
+</code></pre></div></div>
+
+<p>Next is the <strong>job header</strong>. You can add <code class="language-plaintext highlighter-rouge">if</code> tags to limit the scope of the event trigger here. You’ll also need to specify <code class="language-plaintext highlighter-rouge">runs-on</code> to get your Actions workflow running.</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">on_start</span><span class="pi">:</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s">On start</span>
+
+    <span class="c1"># We will only run this action when:</span>
+    <span class="c1"># 1. This repository isn't the template repository.</span>
+    <span class="c1"># Reference https://docs.github.com/en/actions/learn-github-actions/contexts</span>
+    <span class="c1"># Reference https://docs.github.com/en/actions/learn-github-actions/expressions</span>
+    <span class="na">if</span><span class="pi">:</span> <span class="s">${{ !github.event.repository.is_template }}}</span>
+
+    <span class="c1"># We'll run Ubuntu for performance instead of Mac or Windows.</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+</code></pre></div></div>
+
+<p>Last, we are finally in the <strong>steps</strong> of the Actions workflow. This is the heart of the file, where you can customize your course the most.</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="na">steps</span><span class="pi">:</span>
+      <span class="c1"># We'll need to check out the repository so that we can edit the README.</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Checkout</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v3</span>
+
+      <span class="c1"># Update README and set step to '1'.</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Update to step </span><span class="m">1</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">skills/action-update-step@v2</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">token</span><span class="pi">:</span> <span class="s">${{ secrets.GITHUB_TOKEN }}</span>
+          <span class="na">from_step</span><span class="pi">:</span> <span class="m">0</span>
+          <span class="na">to_step</span><span class="pi">:</span> <span class="m">1</span>
+          <span class="na">branch_name</span><span class="pi">:</span> <span class="s">my-first-branch</span>
+</code></pre></div></div>
+
+<p>You may include the <a href="https://github.com/skills/action-update-step">update step action</a> in your course,
+however it is not fully required. You may also customize this script to meet the needs of your course.</p>
+
+<p>Include thorough comments in your workflow files to describe each section. Other authors and your future self will thank you later.</p>
+
+<h2 id="testing-and-monitoring-your-course">Testing and monitoring your course</h2>
+
+<ul>
+  <li>Click on “Use this template” and run through your course on a your personal account. Does everything work? Do any actions go red?</li>
+  <li>Consider asking for both technical and content review.</li>
+  <li>Test your course with a potential learner.</li>
+  <li>Check in our your course regularly for any reported issues or out-of-date information.</li>
+</ul>
+
+<h2 id="best-practices-for-building-courses">Best practices for building courses</h2>
+
+<ul>
+  <li>Not everyone reads docs! Many potential course authors will use your course as an example. Make sure to include lots of comments in your README and Actions workflow files.</li>
+  <li>Keep everything you need in the one course repository.</li>
+  <li>If you need your courses to have limited access, create an organization for your courses, make your courses private, and invite the specific users that need these courses to your organization.</li>
+  <li>Consider adding a Code of Conduct, contributing guide, and issue templates.</li>
+  <li>Keep the number of files and folders in the root directory short. More items in the root level means the README is further down the page.</li>
+</ul>
+
+<h3 id="content">Content</h3>
+
+<ul>
+  <li>The more content you have, the more content you will have to update later. Be concise. Link to the GitHub Docs whenever you can.</li>
+  <li>Where does the learner go to get help? Add links to your README to let the learner know where to ask for help.</li>
+  <li>Make it as easy as possible for the learner to get started. Learners will give up if they don’t make some progress within a few minutes.</li>
+  <li>Write in casual, polite, active, and inspiring language. We’ve found courses perform better when they are more friendly.</li>
+  <li>Use emoji to convey a positive tone. Emoji can add to content, but use words to convey meaning.</li>
+  <li>Check spelling and grammar.</li>
+  <li>Limit use of acronyms, write out the full text instead.</li>
+  <li>Images can be helpful, but only when they are up-to-date.</li>
+  <li>Provide examples and templates to reduce how much work the learner needs to do to complete the step.</li>
+  <li>Follow the <a href="https://github.com/github/docs/blob/main/contributing/content-style-guide.md">GitHub docs content style guide</a>.</li>
+</ul>
+
+<h3 id="actions-workflows">Actions workflows</h3>
+
+<ul>
+  <li>You can do anything in your course that GitHub Actions can do. Review the <a href="https://docs.github.com/actions">GitHub Actions docs</a> and some <a href="https://github.com/sdras/awesome-actions">examples of GitHub Actions</a> to get a feel for what all actions can do.</li>
+  <li>If you are building a course for your own organization, you can add your own analytics or learning management system integration as part of the Actions workflows.</li>
+</ul>
+
+<h3 id="sharing-your-course">Sharing your course</h3>
+
+<ul>
+  <li>Your course only matters if potential learners know about it. Where can you link to your course? If public, is social media an option?</li>
+  <li>Make sure your course includes keywords and text that someone would search for in Google and other search engines.</li>
+</ul>
+</div>
+</div>
+</main>
+
+    <footer
+      class="footer width-full container-xl p-responsive border-top color-border-muted mt-6 py-6"
+      role="contentinfo"
+    >
+      <ul class="list-style-none d-flex flex-wrap">
+        <li class="mr-3">© 2023 GitHub, Inc.</li>
+        <li class="mr-3">
+          <a
+            class="text-underline"
+            href="https://docs.github.com/en/github/site-policy/github-terms-of-service"
+            >Terms</a
+          >
+        </li>
+        <li class="mr-3">
+          <a
+            class="text-underline"
+            href="https://docs.github.com/en/github/site-policy/github-privacy-statement"
+            >Privacy</a
+          >
+        </li>
+        <li class="mr-3">
+          <a class="text-underline" href="https://www.githubstatus.com/"
+            >Status</a
+          >
+        </li>
+        <li class="mr-3">
+          <a class="text-underline" href="https://github.com/pricing"
+            >Pricing</a
+          >
+        </li>
+        <li class="mr-3">
+          <a class="text-underline" href="https://services.github.com"
+            >Expert Services</a
+          >
+        </li>
+        <li class="mr-3">
+          <a class="text-underline" href="https://github.blog">Blog</a>
+        </li>
+      </ul>
+    </footer>
+  </body>
+</html>
